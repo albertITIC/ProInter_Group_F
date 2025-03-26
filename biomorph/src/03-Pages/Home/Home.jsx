@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
 import Header from '../../02-Components/Header/Header';
 import fondo_de_pantalla from '../../../assets/fondo_de_pantalla.png'
 const Home = () => {
