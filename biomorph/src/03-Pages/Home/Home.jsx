@@ -1,15 +1,17 @@
 import React from 'react';
 import Header from '../../02-Components/Header/Header';
+import Footer from '../../02-Components/Footer/Footer';
 import fondo_de_pantalla from '../../../assets/fondo_de_pantalla.png'
 import { useNavigate } from 'react-router-dom';
 const Home = () => {
     const navigate = useNavigate();
     return (
+      <>
+        <Header />
       <div className="page-container">
         <style>
-@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
-</style>
-        <Header />
+        @import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+        </style>
         <div 
           className="home-page"
           style={{ 
@@ -24,6 +26,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
+      </>
     );
   };
   
