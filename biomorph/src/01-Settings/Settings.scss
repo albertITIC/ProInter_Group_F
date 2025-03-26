@@ -1,4 +1,8 @@
 $primary-color: #000000;
 $secondary-color: #ffffff;
 
-$font: 'Open Sans', sans-serif; //Font de prova
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+
+body {
+  font-family: 'Lacquer', sans-serif;
+}
