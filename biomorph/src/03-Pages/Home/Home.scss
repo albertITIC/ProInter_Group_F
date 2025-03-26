@@ -1,0 +1,57 @@
+/* Home.css */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Lacquer';
+  }
+  .lacquer-regular {
+    font-family: "Lacquer", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .home-page {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    position: relative;
+  }
+  
+  .content {
+    max-width: 800px;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  .cta-button {
+    background: linear-gradient(90deg, #FFFF,#0000, #0000, #FFFF); /* Darker gradient on hover */
+    color: white;
+    border: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    padding: 20px 30px;
+    font-size: 1rem;
+    border-radius: 20px; /* More rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    font-weight: 600; /* Semi-bold text */
+    text-transform: uppercase; /* All caps like your image */
+    letter-spacing: 1px; /* Slightly spaced letters */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .cta-button:hover {
+    color: red;
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  }
+  
