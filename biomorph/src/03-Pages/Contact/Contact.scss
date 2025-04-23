@@ -1,0 +1,108 @@
+.contact-page {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 80px; /* Space for fixed header */
+  color: white;
+  font-family: "lacquer";
+}
+.lacquer-regular {
+  font-family: "Lacquer", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.contact-container {
+  max-width: 80vw;
+  align-content: center;
+  height: 60vh;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: rgba(17, 15, 15, 0.8);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.contact-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+#comments {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+#submit {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-button {
+  background: linear-gradient(90deg, #ffff, black, black, #ffff);
+  color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: gray;
+  width: 60%;
+  justify-self: center;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-button:hover {
+  background: linear-gradient(90deg, #ffff, black, black, #ffff);
+  transform: translateY(-2px);
+}
+
+/* For required field asterisk */
+.form-group label:after {
+  content: " *";
+  color: #ff4d4d;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    margin: 20px;
+    padding: 30px 15px;
+  }
+}
