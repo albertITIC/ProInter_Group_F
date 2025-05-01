@@ -1,5 +1,6 @@
-
-
+import Header from "../../02-Components/Header/Header"
+import Footer from "../../02-Components/Footer/Footer"
+ 
 const Shop = () =>{
 
     const data = [
@@ -44,8 +45,11 @@ const Shop = () =>{
 
     return(
         <>
-        <h1>Shop</h1>
+        <Header/>
+        
         </>
     )
     
 }
+
+export default Shop;
