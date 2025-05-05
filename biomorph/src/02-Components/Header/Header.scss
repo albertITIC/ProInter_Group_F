@@ -4,9 +4,63 @@ header {
     height: 120px;
 }
 
+a{
+    cursor: pointer;
+}
+
+
 .header{
 
     height: 100%;
+
+    &__wrapper-cart{
+        display: flex;
+        padding-top: 10px;
+        gap: 20px;
+        overflow-x: scroll;
+        padding: 5px;
+    }
+
+    &__cart{
+        font-family: 'Lacquer', sans-serif;
+        position: absolute;
+        top: 120px;
+        left: 0px;
+        width: 100%;
+        height: fit-content;
+        opacity: 0;
+        background-color: white;
+        z-index: 5;
+        transition: all 0.3s ease-in-out;
+        padding: 25px;
+
+        &.is-active{
+            opacity: 1;
+        }
+
+        &-info{
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 5px dotted black;
+            padding-bottom: 10px;
+        }
+
+        &-title{
+            font-weight: 500;
+        }
+
+        &-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 200px;
+            border: 5px solid black;
+            border-style: dotted;
+            border-radius: 10px;
+        }
+    }
 
     &__row{
         display: flex; 
@@ -70,7 +124,7 @@ nav{
     nav{
         display: none;
     }
-
+   
     .header{
 
         &__title{
