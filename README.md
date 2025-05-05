@@ -3,17 +3,17 @@
 #### Inici 23/04/25
 
 ### Instal·lació de l'entorn virtual:
-![Resultat entorn virtual](image.png)
+![Resultat entorn virtual](img/image.png)
 
 ### Instal·lació de Django:
-![Instal·lació de Django](image-1.png)
+![Instal·lació de Django](img/image-1.png)
 
 ### Inici del projecte
-![Inici](img.png)
+![Inici](img/img.png)
 
 ### Resultat:
-![img_1](img_1.png)
+![img_1](img/img_1.png)
 
 ### Primera app - cart (carret de la compra)
-![Cart](img_2.png)
+![Cart](img/img_2.png)
 
