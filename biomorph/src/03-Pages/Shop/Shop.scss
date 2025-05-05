@@ -1,0 +1,103 @@
+// Titol de la pàgina principal
+.shop-title{
+    font-family: "Lacquer", system-ui;
+    padding: 2%;
+}
+
+// Llistat de productes
+.title-section{
+    background-color: black;
+    font-family: "Lacquer", system-ui;
+    font-size: 45px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.subtitle-section{
+    // background-color: rgba(0, 0, 0, 0.703);
+    font-family: "Lacquer", system-ui;
+    font-size: 35px;
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+
+.card-skeletons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    background-color: rgba(0, 0, 0, 0.703);
+
+}
+
+.element_1{
+    font-family: "Lacquer", system-ui;
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.703);
+    color: white;
+    padding: 2%;
+    font-size: 20px; // Tenir en compte el color del preu
+}
+
+// Propietats del preu
+.price{
+    color: red;
+    font-size: 50px;
+}
+.img_prod_1,
+.img_prod_2 {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_prod_1,
+.img_prod_2 {
+    width: 275px;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.img_prod_1 img,
+.img_prod_2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.img_prod_1:hover img,
+.img_prod_2:hover img {
+    transform: scale(1.1);
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+    border: none;
+}
+
+.buttons button{
+    border: none;
+    color: rgba(255, 0, 0, 0.600);
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.buttons :hover{
+    border: none;
+    color: rgb(0, 255, 38);
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
