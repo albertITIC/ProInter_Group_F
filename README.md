@@ -15,4 +15,5 @@
 ![img_1](img_1.png)
 
 ### Primera app - cart (carret de la compra)
-![Cart](img_2.png)X 
+![Cart](img_2.png)
+
