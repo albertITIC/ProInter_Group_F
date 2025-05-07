@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'cart',
     'django.contrib.staticfiles',
+    'auth',
 ]
 
 MIDDLEWARE = [
