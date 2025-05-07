@@ -1,8 +1,9 @@
 import Header from "../../02-Components/Header/Header"
 import Footer from "../../02-Components/Footer/Footer"
+import { useNavigate } from "react-router-dom";
  
 const Shop = () =>{
-
+    const navigate = useNavigate();
     const data = [
         {
             id: 1,
@@ -41,8 +42,6 @@ const Shop = () =>{
         }
     ];
     
-
-
     return(
         <>
         <Header/>
