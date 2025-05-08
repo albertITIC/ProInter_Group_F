@@ -19,9 +19,12 @@ const Register = () => {
   return (
     <>
       <Header />
+      <br />
+      <br />
+
       <div className="form-wrapper">
         <form className="register-form" onSubmit={handleSubmit}>
-          <h2>Crear compte</h2>
+          <h2>Crear cuenta</h2>
           <br />
           <label htmlFor="nombre">Nombre</label>
           <input
@@ -59,7 +62,7 @@ const Register = () => {
             required
           />
           <br />
-          <button type="submit">Crear compte</button>
+          <button type="submit">Crear cuenta</button>
           <br />
           <Link to="/account" className="link-btn">
             Tornar
