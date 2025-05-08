@@ -65,7 +65,7 @@ const Register = () => {
           <button type="submit">Crear cuenta</button>
           <br />
           <Link to="/account" className="link-btn">
-            Tornar
+            Volver
           </Link>
         </form>
       </div>
