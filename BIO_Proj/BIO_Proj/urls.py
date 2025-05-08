@@ -28,7 +28,5 @@ urlpatterns = [
     path('login/', CustomTokenObtainPairView.as_view()),
     path('cart/', CartDetail.as_view()),
     path('add-to-cart/<int:product_id>/', AddToCart.as_view()),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include('auth.urls')),
+    path('auth/', include('authstore.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
