@@ -89,7 +89,7 @@ const Header = () => {
                 </a>
               </div>
               <div className="header__nav-item">
-                <a className="header__link" href="/contact">
+                <a className="header__link" href="/account">
                   YOUR ACCOUNT
                 </a>
               </div>
@@ -114,13 +114,13 @@ const Header = () => {
             <a className="header__dropdown-link" href="/shop">
               SHOP
             </a>
-            <a className="header__dropdown-link" href="/shop">
+            <a className="header__dropdown-link" href="/aboutus">
               ABOUT US
             </a>
             <a className="header__dropdown-link" href="/contact">
               CONTACT
             </a>
-            <a className="header__dropdown-link" href="/contact">
+            <a className="header__dropdown-link" href="/account">
               YOUR ACCOUNT
             </a>
           </div>

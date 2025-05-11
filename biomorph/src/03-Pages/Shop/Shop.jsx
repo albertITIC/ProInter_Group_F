@@ -1,8 +1,9 @@
 import Header from "../../02-Components/Header/Header"
 import Footer from "../../02-Components/Footer/Footer"
+import { useNavigate } from "react-router-dom";
  
 const Shop = () =>{
-
+    const navigate = useNavigate();
     const data = [
         {
             id: 1,
@@ -41,8 +42,6 @@ const Shop = () =>{
         }
     ];
     
-
-
     return(
         <>
         <Header/>
@@ -62,7 +61,7 @@ const Shop = () =>{
                 <div className="img_prod_1">
                     <img src="../../assets/chiken.png" alt="Chiken photo" />
                 </div>
-                <div className="price">299.99€</div>
+                <div className="price">199.99€</div>
                 
                 <div className="buttons"> 
                     <button>BUY</button>
@@ -92,7 +91,7 @@ const Shop = () =>{
                 <div className="img_prod_2">
                     <img src="../../assets/pidgeon.png" alt="Pidgeon photo"/>
                 </div>
-                <div className="price">299.99€</div>
+                <div className="price">219.00€</div>
                 
                 <div className="buttons"> 
                     <button>BUY</button>
@@ -112,7 +111,7 @@ const Shop = () =>{
                 <div className="img_prod_1">
                     <img src="../../assets/snake.png" alt="snake photo" />
                 </div>
-                <div className="price">299.99€</div>
+                <div className="price">550.00€</div>
                 
                 <div className="buttons"> 
                     <button>BUY</button>
@@ -127,7 +126,7 @@ const Shop = () =>{
                 <div className="img_prod_1">
                     <img src="../../assets/Hedgehog.png" alt="Hedgehog photo" />
                 </div>
-                <div className="price">299.99€</div>
+                <div className="price">350.00€</div>
                 
                 <div className="buttons"> 
                     <button>BUY</button>
@@ -142,7 +141,7 @@ const Shop = () =>{
                 <div className="img_prod_2">
                     <img src="../../assets/canary.png" alt="canary photo"/>
                 </div>
-                <div className="price">299.99€</div>
+                <div className="price">400.00€</div>
                 
                 <div className="buttons"> 
                     <button>BUY</button>
