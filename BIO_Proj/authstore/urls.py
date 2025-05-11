@@ -1,9 +1,8 @@
-# authstore/urls.py
 from django.urls import path
-from . import views
+from .views import RegisterView
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path('register/', views.register, name='register'),
-    path('login/', views.login_view, name='login'),
-    path('change-password/', views.change_password, name='change-password'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', obtain_auth_token, name='login'),
 ]
