@@ -1,0 +1,26 @@
+version: "3.1"
+services:
+  db:
+    image: postgres:13
+    container_name: db
+    environment:
+      - POSTGRES_DB=djangoM7
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_USER=kumi
+    ports:
+      - "5432:5432"
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    ports:
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: kumigaoo@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: ShivaInu8
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+volumes:
+  local_pgdata:
+  pgadmin-data:
