@@ -44,9 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'cart',
+    'authstore',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -57,9 +60,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
 
 ROOT_URLCONF = 'BIO_Proj.urls'
+AUTH_USER_MODEL = 'authstore.CustomUser'
+
 
 TEMPLATES = [
     {
@@ -84,8 +94,12 @@ WSGI_APPLICATION = 'BIO_Proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangoM7',
+        'USER': 'kumi',
+        'PASSWORD': 'admin123',
+        'HOST': 'localhost',
+        'PORT': '5434',
     }
 }
 

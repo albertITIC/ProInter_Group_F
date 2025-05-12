@@ -1,19 +1,19 @@
 version: "3.1"
 services:
   db:
-    image: postgres:13
-    container_name: db
+    image: postgres:14
+    container_name: db_
     environment:
       - POSTGRES_DB=djangoM7
       - POSTGRES_PASSWORD=admin123
       - POSTGRES_USER=kumi
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
       - local_pgdata:/var/lib/postgresql/data
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin4
+    container_name: pgadmin4_
     ports:
       - "80:80"
     environment:
