@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Header from "../../02-Components/Header/Header";
-import "./Register.scss";
+import "./register.scss";
 
 const Register = () => {
   const [isLogin, setIsLogin] = useState(false);

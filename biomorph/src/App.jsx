@@ -3,6 +3,7 @@ import Home from "./03-Pages/Home/Home";
 import AboutUs from "./03-Pages/About-Us/About-Us";
 import Shop from './03-Pages/Shop/Shop';
 import ContactUs from "./03-Pages/Contact/Contact";
+import Register from "./03-Pages/Register/Register";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
