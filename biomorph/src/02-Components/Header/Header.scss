@@ -24,6 +24,7 @@ a{
     &__cart{
         font-family: 'Lacquer', sans-serif;
         position: absolute;
+        display: none;
         top: 120px;
         left: 0px;
         width: 100%;
@@ -36,6 +37,8 @@ a{
 
         &.is-active{
             opacity: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         &-info{
@@ -71,6 +74,7 @@ a{
 
     &__drowdown{
         opacity: 0;
+        display: none;
         transition: opacity 0.3s ease-in-out;
     }
     
@@ -141,6 +145,7 @@ nav{
 
         &__drowdown.is-active{
             position: absolute;
+            display: block;
             top: 16px;
             left: 0;
             width: 100%;
