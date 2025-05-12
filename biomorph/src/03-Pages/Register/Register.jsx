@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 import Header from "../../02-Components/Header/Header";
 import "./Register.scss";
 
 const Register = () => {
+<<<<<<< HEAD
   const [isLogin, setIsLogin] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState(""); // Not used in login
@@ -55,6 +60,17 @@ const Register = () => {
       setError("Error de conexión con el servidor.");
       setSuccess(null);
     }
+=======
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ nombre, apellido, email, password });
+    // Aquí se puede llamar al backend para registrar
+>>>>>>> main
   };
 
   return (
@@ -65,6 +81,7 @@ const Register = () => {
 
       <div className="form-wrapper">
         <form className="register-form" onSubmit={handleSubmit}>
+<<<<<<< HEAD
           <h2>{isLogin ? "Iniciar sesión" : "Crear cuenta"}</h2>
           <br />
           <label htmlFor="username">Nombre de usuario</label>
@@ -89,6 +106,37 @@ const Register = () => {
               <br />
             </>
           )}
+=======
+          <h2>Crear cuenta</h2>
+          <br />
+          <label htmlFor="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+          />
+          <br />
+          <label htmlFor="apellido">Apellido</label>
+          <input
+            type="text"
+            id="apellido"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+            required
+          />
+          <br />
+          <label htmlFor="email">Correo electrónico</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <br />
+>>>>>>> main
           <label htmlFor="password">Contraseña</label>
           <input
             type="password"
@@ -98,6 +146,7 @@ const Register = () => {
             required
           />
           <br />
+<<<<<<< HEAD
           <button type="submit">
             {isLogin ? "Iniciar sesión" : "Crear cuenta"}
           </button>
@@ -115,13 +164,19 @@ const Register = () => {
               ? "¿No tienes cuenta? Crea una"
               : "¿Ya tienes cuenta? Inicia sesión"}
           </button>
+=======
+          <button type="submit">Crear cuenta</button>
+>>>>>>> main
           <br />
           <Link to="/account" className="link-btn">
             Volver
           </Link>
+<<<<<<< HEAD
 
           {error && <p className="error-message">{error}</p>}
           {success && <p className="success-message">{success}</p>}
+=======
+>>>>>>> main
         </form>
       </div>
     </>
