@@ -16,17 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from cart.views import (ProductList, UserCreate, CartDetail, 
-                   AddToCart, CustomTokenObtainPairView)
+from cart.views import (ProductList, CartDetail,
+                   AddToCart)
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path('products/', ProductList.as_view()),
-    path('register/', UserCreate.as_view()),
-    path('login/', CustomTokenObtainPairView.as_view()),
-    path('cart/', CartDetail.as_view()),
-    path('add-to-cart/<int:product_id>/', AddToCart.as_view()),
     path('auth/', include('authstore.urls')),
+    path('cart/', include('cart.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
