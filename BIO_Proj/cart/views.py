@@ -5,7 +5,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 
 from .models import Product, Cart, CartItem
-from serializers import ProductSerializer,CartSerializer,UserSerializer
+from .serializers import ProductSerializer, CartSerializer, UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 class ProductList(generics.ListCreateAPIView):
@@ -17,7 +17,6 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     parser_classes = [MultiPartParser, FormParser]
-
 
 class UserCreate(generics.CreateAPIView):
     queryset = User.objects.all()

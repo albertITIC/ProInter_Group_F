@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from cart.models import Product
+from .models import Product
 from django.contrib.auth.models import User
-from cart.models import CartItem, Cart
+from .models import CartItem, Cart
 class ProductSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
     

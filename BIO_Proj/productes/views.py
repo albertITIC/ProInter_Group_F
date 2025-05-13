@@ -1,14 +1,25 @@
-from rest_framework import generics
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from .models import Producto
-from .serialitzers import ProductoSerializer
+from .serializers  import ProductoSerializer
 
-# Vista para LISTAR TODOS los productos
-class ProductoList(generics.ListAPIView):
-    queryset = Producto.objects.all()
-    serializer_class = ProductoSerializer
+# Mostra tots els productes
+@api_view(['GET'])
+def lista_productos(request):
+    productos = Producto.objects.all()
+    serializer = ProductoSerializer(productos, many=True)
+    return Response(serializer.data)
 
-# Vista para DETALLES de un producto específico (por ID)
-class ProductoDetail(generics.RetrieveAPIView):
-    queryset = Producto.objects.all()
-    serializer_class = ProductoSerializer
-    lookup_field = 'id_product'
+# Mostra els productes de categoría "bones"
+@api_view(['GET'])
+def productos_huesos(request):
+    productos = Producto.objects.filter(category='bones')
+    serializer = ProductoSerializer(productos, many=True)
+    return Response(serializer.data)
+
+# Mostra els productes de categoría "embriones"
+@api_view(['GET'])
+def productos_embriones(request):
+    productos = Producto.objects.filter(category='embriones')
+    serializer = ProductoSerializer(productos, many=True)
+    return Response(serializer.data)

@@ -1,161 +1,94 @@
-import Header from "../../02-Components/Header/Header"
-import Footer from "../../02-Components/Footer/Footer"
+// Fitxer dinàmic
+import { useState, useEffect } from 'react';
+import Header from "../../02-Components/Header/Header";
+import Footer from "../../02-Components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
- 
-const Shop = () =>{
+
+const Shop = () => {
     const navigate = useNavigate();
-    const data = [
-        {
-            id: 1,
-            name: 'Dead Duck',
-            price: 100,
-            image: 'https://www.creativefabrica.com/wp-content/uploads/2021/12/20/Dead-Duck-illustration-Design-Vector-eps-Creative-Fabrica.jpg',
-            description: 'A dead duck'
-        },
-        {
-            id: 2,
-            name: 'Dead Fish',
-            price: 45,
-            image: 'https://www.creativefabrica.com/wp-content/uploads/2021/12/20/Dead-Fish-illustration-Design-Vector-eps-Creative-Fabrica.jpg',
-            description: 'A dead fish'
-        },
-        {
-            id: 3,
-            name: 'Dead Bird',
-            price: 50,
-            image: 'https://www.creativefabrica.com/wp-content/uploads/2021/12/20/Dead-Bird-illustration-Design-Vector-eps-Creative-Fabrica.jpg',
-            description: 'A dead bird'
-        },
-        {
-            id: 4,
-            name: 'Dead Cat',
-            price: 60,
-            image: 'https://www.creativefabrica.com/wp-content/uploads/2021/12/20/Dead-Cat-illustration-Design-Vector-eps-Creative-Fabrica.jpg',
-            description: 'A dead cat'
-        },
-        {
-            id: 5,
-            name: 'Dead Dog',
-            price: 70,
-            image: 'https://www.creativefabrica.com/wp-content/uploads/2021/12/20/Dead-Dog-illustration-Design-Vector-eps-Creative-Fabrica.jpg',
-            description: 'A dead dog'
-        }
-    ];
-    
-    return(
+    const [skeletons, setSkeletons] = useState([]);
+    const [embryos, setEmbryos] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                // Fetch para esqueletos (categoría 'bones')
+                const skeletonsResponse = await fetch('http://127.0.0.1:8000/products/bones/');
+                if (!skeletonsResponse.ok) throw new Error('Error cargando esqueletos');
+
+                // Fetch para embriones (categoría 'embriones')
+//                 const embryosResponse = await fetch('/products/all/?category=embriones');
+                const embryosResponse = await fetch('http://127.0.0.1:8000/products/embriones/');
+
+                if (!embryosResponse.ok) throw new Error('Error cargando embriones');
+
+                const [skeletonsData, embryosData] = await Promise.all([
+                    skeletonsResponse.json(),
+                    embryosResponse.json()
+                ]);
+
+                setSkeletons(skeletonsData);
+                setEmbryos(embryosData);
+            } catch (err) {
+                console.error("Error fetching products:", err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    const renderProductCard = (product) => (
+        <div className="element_1" key={product.id_product}>
+            <div>{product.name.toUpperCase()}</div>
+            <div className="img_prod_1">
+                <img
+                    src={`http://127.0.0.1:8000/${product.image_url}`}
+                    alt={product.name}
+                    onError={(e) => {
+                        e.target.src = '../../assets/placeholder.png';
+                    }}
+                />
+            </div>
+            <div className="price">{product.price}€</div>
+            <div className="buttons">
+                <button>COMPRAR</button>
+                <button>AÑADIR</button>
+            </div>
+        </div>
+    );
+
+    if (loading) return <div className="loading">Cargando productos...</div>;
+    if (error) return <div className="error">Error: {error}</div>;
+
+    return (
         <>
-        <Header/>
-        {/* Titol de la pàgina */}
-        <h1 className="shop-title">Shop:</h1>
+            <Header/>
+            <h1 className="shop-title">Shop:</h1>
 
-        <h1 className="title-section">SKELETONS:</h1>
-        <h2 className="subtitle-section">ARTICULATED SKELETONS:</h2>
-        
-        {/* Div que controla tots els elements  */}
-        <div className="card-skeletons">
+            <h1 className="title-section">SKELETONS:</h1>
+            <h2 className="subtitle-section">ARTICULATED SKELETONS:</h2>
 
-            {/* Div on estroben els diferents productes (estàn separats)*/}
-            {/* Element 1 */}
-            <div className="element_1">
-                <div>CHIKEN</div>
-                <div className="img_prod_1">
-                    <img src="../../assets/chiken.png" alt="Chiken photo" />
-                </div>
-                <div className="price">199.99€</div>
-                
-                <div className="buttons"> 
-                    <button>BUY</button>
-                    <button>ADD</button>
-                </div>
-
+            <div className="card-skeletons">
+                {skeletons.map(renderProductCard)}
             </div>
 
-            {/* Element 2 */}
-            <div className="element_1">
-                <div>BAT</div>
-                <div className="img_prod_1">
-                    <img src="../../assets/bat.png" alt="Bat photo" />
-                </div>
-                <div className="price">299.99€</div>
-                
-                <div className="buttons"> 
-                    <button>BUY</button>
-                    <button>ADD</button>
-                </div>
-                
+            <br />
+
+            <h1 className="title-section">ANIMALES DIAFANIZADOS:</h1>
+            <h2 className="subtitle-section">LIMITED EDITION:</h2>
+
+            <div className="card-skeletons">
+                {embryos.map(renderProductCard)}
             </div>
 
-            {/* Element 3 */}
-            <div className="element_1">
-                <div>PIDGEON</div>
-                <div className="img_prod_2">
-                    <img src="../../assets/pidgeon.png" alt="Pidgeon photo"/>
-                </div>
-                <div className="price">219.00€</div>
-                
-                <div className="buttons"> 
-                    <button>BUY</button>
-                    <button>ADD</button>
-                </div>
-                            
-            </div>
-        </div>
-
-        <br />
-        <h1 className="title-section">ANIMALES DIAFANIZADOS:</h1>
-        <h2 className="subtitle-section">LIMITED EDITION:</h2>
-        <div className="card-skeletons">
-            {/* Element 1 */}
-            <div className="element_1">
-                <div>SNAKE</div>
-                <div className="img_prod_1">
-                    <img src="../../assets/snake.png" alt="snake photo" />
-                </div>
-                <div className="price">550.00€</div>
-                
-                <div className="buttons"> 
-                    <button>BUY</button>
-                    <button>ADD</button>
-                </div>
-
-            </div>
-
-            {/* Element 2 */}
-            <div className="element_1">
-                <div>HEDGEHOG</div>
-                <div className="img_prod_1">
-                    <img src="../../assets/Hedgehog.png" alt="Hedgehog photo" />
-                </div>
-                <div className="price">350.00€</div>
-                
-                <div className="buttons"> 
-                    <button>BUY</button>
-                    <button>ADD</button>
-                </div>
-                
-            </div>
-
-            {/* Element 3 */}
-            <div className="element_1">
-                <div>CANARY</div>
-                <div className="img_prod_2">
-                    <img src="../../assets/canary.png" alt="canary photo"/>
-                </div>
-                <div className="price">400.00€</div>
-                
-                <div className="buttons"> 
-                    <button>BUY</button>
-                    <button>ADD</button>
-                </div>
-                            
-            </div>
-        </div>
-        
-        <Footer />
-        
+            <Footer />
         </>
-    )
-    
-}
+    );
+};
 
 export default Shop;
