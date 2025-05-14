@@ -14,14 +14,10 @@ const Shop = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                // Fetch para esqueletos (categoría 'bones')
                 const skeletonsResponse = await fetch('http://127.0.0.1:8000/products/bones/');
                 if (!skeletonsResponse.ok) throw new Error('Error cargando esqueletos');
 
-                // Fetch para embriones (categoría 'embriones')
-//                 const embryosResponse = await fetch('/products/all/?category=embriones');
                 const embryosResponse = await fetch('http://127.0.0.1:8000/products/embriones/');
-
                 if (!embryosResponse.ok) throw new Error('Error cargando embriones');
 
                 const [skeletonsData, embryosData] = await Promise.all([
@@ -42,14 +38,21 @@ const Shop = () => {
         fetchProducts();
     }, []);
 
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return null;
+        // Si ya es una URL absoluta, úsala tal cual
+        return imagePath.startsWith('http') ? imagePath : `http://127.0.0.1:8000/${imagePath}`;
+    };
+
     const renderProductCard = (product) => (
         <div className="element_1" key={product.id_product}>
             <div>{product.name.toUpperCase()}</div>
             <div className="img_prod_1">
                 <img
-                    src={`http://127.0.0.1:8000/${product.image_url}`}
+                    src={getImageUrl(product.image_url)}
                     alt={product.name}
                     onError={(e) => {
+                        console.error(`Imagen no encontrada: ${product.image_url}`);
                         e.target.src = '../../assets/placeholder.png';
                     }}
                 />
@@ -67,7 +70,7 @@ const Shop = () => {
 
     return (
         <>
-            <Header/>
+            <Header />
             <h1 className="shop-title">Shop:</h1>
 
             <h1 className="title-section">SKELETONS:</h1>
