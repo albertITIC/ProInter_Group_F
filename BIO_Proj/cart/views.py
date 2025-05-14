@@ -5,6 +5,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from cart.models import Product
 from cart.serializers import ProductSerializer,CartSerializer,UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django_restframework_apiview.views import APIView
 
 class ProductList(generics.ListAPIView):
     queryset = Product.objects.all()
