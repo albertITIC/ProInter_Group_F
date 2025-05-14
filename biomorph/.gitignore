@@ -21,3 +21,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#Per fer la branca de recuperació
+__pycache__/
+*.pyc
+.idea/
+
