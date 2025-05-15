@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from cart.views import UserCreate, CustomTokenObtainPairView, CartDetail, AddToCart
+from cart.views import UserCreate, CartDetail, AddToCart
 from django.conf import settings
 from django.conf.urls.static import static
-
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from cart.views import (
     UserCreate,
     CustomTokenObtainPairView,
@@ -12,7 +13,6 @@ from cart.views import (
     AddToCart,
 )
 
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('products/', include('productes.urls')),

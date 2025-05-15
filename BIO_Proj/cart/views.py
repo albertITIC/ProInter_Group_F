@@ -4,13 +4,16 @@ from rest_framework import generics,permissions, status
 from rest_framework.parsers import MultiPartParser, FormParser
 from cart.models import Product, Cart, CartItem
 from rest_framework.response import Response
-from rest_framework.views import APIViewfrom
+from rest_framework.views import APIView
 from cart.serializers import ProductSerializer,CartSerializer
 from authstore.serializers import UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
 
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = TokenObtainPairSerializer
 class ProductList(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

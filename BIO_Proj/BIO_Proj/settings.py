@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'cart',
+    'productes',
     'authstore',
     'django.contrib.staticfiles',
     'corsheaders',
@@ -106,8 +107,6 @@ DATABASES = {
     }
 }
 
-<<<<<<<<< Temporary merge branch 1
-=========
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Puerto de Vite/React
     "http://127.0.0.1:5173",
