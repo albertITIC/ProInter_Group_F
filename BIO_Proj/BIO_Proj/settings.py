@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'cart',
-    'productes',
+    'authstore',
     'django.contrib.staticfiles',
     'corsheaders',
 ]
@@ -62,9 +63,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
 
 ROOT_URLCONF = 'BIO_Proj.urls'
+AUTH_USER_MODEL = 'authstore.CustomUser'
+
 
 TEMPLATES = [
     {
@@ -107,6 +115,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = True  # Solo para desarrollo (en producción usa CORS_ALLOWED_ORIGINS)
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'DELETE']
 CORS_ALLOW_HEADERS = ['Content-Type', 'Authorization']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

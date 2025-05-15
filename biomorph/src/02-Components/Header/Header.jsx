@@ -59,7 +59,7 @@ const Header = () => {
       price: "30$",
       image: "",
     },
-  ]
+  ];
 
   return (
     <>
@@ -94,7 +94,7 @@ const Header = () => {
                 </a>
               </div>
               <div className="header__nav-item">
-                <a className="header__link" onClick={toggleCart}>
+                <a className="header__link" href="/cart">
                   CART
                 </a>
               </div>
@@ -106,7 +106,9 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className={`header__drowdown ${dropdownActive ? "is-active" : ""}`}>
+        <div
+          className={`header__drowdown ${dropdownActive ? "is-active" : ""}`}
+        >
           <div className="header__dropdown-content">
             <a className="header__dropdown-link" href="/">
               HOME
@@ -129,7 +131,9 @@ const Header = () => {
       <div className={`header__cart ${cartActive ? "is-active" : ""}`}>
         <div className="header__cart-info">
           <h1 className="header__cart-title">Cart</h1>
-          <a className="header__cart-checkout" href="/">Checkout</a>
+          <a className="header__cart-checkout" href="/">
+            Checkout
+          </a>
         </div>
         <div className="header__wrapper-cart">
           {cart.map((item, index) => (
