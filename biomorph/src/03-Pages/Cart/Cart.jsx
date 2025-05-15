@@ -84,6 +84,12 @@ const ProductCard = ({
   );
 };
 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const url = productsGet;
+  ("http://127.0.0.1:8000/cart/products/");
+};
 const productsData = [
   {
     id: "erizo",
@@ -102,6 +108,12 @@ const productsData = [
 ];
 
 export default function Cart() {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const carrito = await fetch("http://127.0.0.1:8000/cart/products");
+    };
+  });
+
   const [cart, setCart] = useState({
     erizo: 3,
     canario: 2,

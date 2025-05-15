@@ -13,7 +13,7 @@ class Producto(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     category = models.CharField(max_length=20, choices=CATEGORIA_CHOICES)
-    image_url = models.URLField(max_length=200, blank=True)
+    image_url = models.CharField(max_length=200, blank=True) # URLField
 
     def __str__(self):
         return self.nombre

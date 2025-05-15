@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from rest_framework import generics, permissions, status
+from rest_framework import generics,permissions, status
 from rest_framework.parsers import MultiPartParser, FormParser
+from cart.models import Product, Cart, CartItem
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from .models import Product, Cart, CartItem
-from .serializers import ProductSerializer, CartSerializer, UserSerializer
+from rest_framework.views import APIViewfrom
+from cart.serializers import ProductSerializer,CartSerializer
+from authstore.serializers import UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth import get_user_model
+from rest_framework.views import APIView
 
 class ProductList(generics.ListAPIView):
     queryset = Product.objects.all()
@@ -17,7 +20,10 @@ class ProductDetail(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     parser_classes = [MultiPartParser, FormParser]
 
+
 class UserCreate(generics.CreateAPIView):
+    
+    User = get_user_model()
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
