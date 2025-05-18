@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   db:
-    image: postgres:14
+    image: postgres:13
     container_name: db_
     environment:
       - POSTGRES_DB=djangoM7
