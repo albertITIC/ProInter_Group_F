@@ -17,8 +17,7 @@ from cart.views import (
 urlpatterns = [
     path('products/', include('productes.urls')),
     path('register/', UserCreate.as_view()),
-    path('login/', CustomTokenObtainPairView.as_view()),
-    path('cart/', CartDetail.as_view()),
+    path('login/', CustomTokenObtainPairView.as_view()), 
     path('add-to-cart/<int:product_id>/', AddToCart.as_view()),
     path('products/', include('productes.urls')),
     path('auth/', include('authstore.urls')),
