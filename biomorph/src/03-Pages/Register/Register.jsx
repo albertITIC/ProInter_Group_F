@@ -38,6 +38,9 @@ const Register = () => {
           setSuccess("Inicio de sesión exitoso.");
           // Guarda token o usuario si es necesario
           console.log("Login success:", data);
+
+          localStorage.setItem("accessToken", data.access);
+          localStorage.setItem("refreshToken", data.refresh);
         } else {
           setSuccess("Cuenta creada correctamente.");
           console.log("Registro exitoso:", data);

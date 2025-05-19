@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import Header from "../../02-Components/Header/Header";
 
 const ProductCard = ({
   name,
@@ -84,70 +85,87 @@ const ProductCard = ({
   );
 };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  const url = productsGet;
-  ("http://127.0.0.1:8000/cart/products/");
-};
-const productsData = [
-  {
-    id: "erizo",
-    name: "Erizo",
-    description: "Strange look...",
-    price: 298,
-    image: "/images/erizo.png",
-  },
-  {
-    id: "canario",
-    name: "Canario",
-    description: "Strange look...",
-    price: 298,
-    image: "/images/canario.png",
-  },
-];
-
 export default function Cart() {
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const carrito = await fetch("http://127.0.0.1:8000/cart/products");
-    };
-  });
+  const [cartItems, setCartItems] = useState([]);
 
-  const [cart, setCart] = useState({
-    erizo: 3,
-    canario: 2,
-  });
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+
+        if (!token) {
+          throw new Error("No auth token found. Please log in.");
+        }
+
+        const response = await fetch("http://127.0.0.1:8000/cart/my-cart/", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        const data = await response.json();
+
+        console.log("Cart API response:", data);
+        if (!response.ok) {
+          throw new Error(data.detail || "Failed to fetch cart");
+        }
+
+        setCartItems(data.items);
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    };
+
+    fetchCart();
+  }, []);
 
   const handleIncrease = (id) => {
-    setCart((prev) => ({ ...prev, [id]: prev[id] + 1 }));
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.product.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
   };
 
   const handleDecrease = (id) => {
-    setCart((prev) => ({ ...prev, [id]: Math.max(0, prev[id] - 1) }));
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.product.id === id
+          ? { ...item, quantity: Math.max(0, item.quantity - 1) }
+          : item
+      )
+    );
   };
 
-  const total = productsData.reduce(
-    (sum, product) => sum + product.price * (cart[product.id] || 0),
-    0
-  );
+  const total = Array.isArray(cartItems)
+    ? cartItems.reduce(
+        (sum, item) => sum + item.product.price * item.quantity,
+        0
+      )
+    : 0;
 
   return (
     <div
       style={{
         backgroundColor: "#212121",
         minHeight: "100vh",
-        padding: "32px",
         color: "white",
       }}
     >
-      {productsData.map((product) => (
+      <Header />
+
+      {cartItems.map((item) => (
         <ProductCard
-          key={product.id}
-          {...product}
-          quantity={cart[product.id] || 0}
-          onIncrease={() => handleIncrease(product.id)}
-          onDecrease={() => handleDecrease(product.id)}
+          key={item.product.id}
+          name={item.product.name}
+          description={item.product.description}
+          price={item.product.price}
+          quantity={item.quantity}
+          image={`http://127.0.0.1:8000${item.product.image}`}
+          onIncrease={() => handleIncrease(item.product.id)}
+          onDecrease={() => handleDecrease(item.product.id)}
         />
       ))}
 
@@ -155,14 +173,14 @@ export default function Cart() {
         <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
           TOTAL:
         </Typography>
-        {productsData.map((product) => (
+        {cartItems.map((item) => (
           <div
-            key={product.id}
+            key={item.product.id}
             style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <Typography>{product.name.toUpperCase()}:</Typography>
+            <Typography>{item.product.name.toUpperCase()}:</Typography>
             <Typography>
-              {(product.price * (cart[product.id] || 0)).toLocaleString()}€
+              {(item.product.price * item.quantity).toLocaleString()}€
             </Typography>
           </div>
         ))}
